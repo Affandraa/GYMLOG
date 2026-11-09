@@ -58,6 +58,9 @@ import { WorkoutHistoryView } from './components/workout/WorkoutHistoryView'
 import { ExerciseLibraryView } from './components/workout/ExerciseLibraryView'
 import { StartWorkoutLauncherModal } from './components/workout/StartWorkoutLauncherModal'
 
+// Phase 3 Components
+import { DailyNutritionDashboard } from './components/nutrition/DailyNutritionDashboard'
+
 export default function App() {
   // Navigation State
   const [currentTab, setCurrentTab] = useState<NavTab>('dashboard')
@@ -332,13 +335,13 @@ export default function App() {
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-400">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Phase 2: Smart Workout Tracker Active</span>
+                  <span>Phase 3: Nutrition &amp; Calorie Tracker Active</span>
                 </div>
                 <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
                   Welcome back, <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">{profile.name}</span>
                 </h1>
                 <p className="text-sm text-zinc-400 max-w-xl">
-                  Ready to train? Track your weights, reps, rest timers, and progressive overload with zero friction.
+                  Ready to train? Track your weights, reps, rest timers, progressive overload, and now full macro &amp; calorie nutrition — all in one place.
                 </p>
               </div>
 
@@ -356,6 +359,13 @@ export default function App() {
                 >
                   <BookOpen className="w-4 h-4 text-emerald-400" />
                   <span>Browse Exercises</span>
+                </button>
+                <button
+                  onClick={() => setCurrentTab('nutrition')}
+                  className="px-4 py-3 text-xs font-semibold text-zinc-300 bg-zinc-800 hover:bg-zinc-700 rounded-xl transition-all flex items-center gap-2 cursor-pointer"
+                >
+                  <Flame className="w-4 h-4 text-orange-400" />
+                  <span>Log Nutrition</span>
                 </button>
               </div>
             </div>
@@ -602,7 +612,12 @@ export default function App() {
           />
         )}
 
-        {/* ================= TAB 8: PROFILE & SETTINGS ================= */}
+        {/* ================= TAB 8: NUTRITION & CALORIE TRACKER ================= */}
+        {currentTab === 'nutrition' && (
+          <DailyNutritionDashboard profile={profile} />
+        )}
+
+        {/* ================= TAB 9: PROFILE & SETTINGS ================= */}
         {currentTab === 'profile' && (
           <div className="space-y-6 max-w-4xl mx-auto">
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 md:p-8 space-y-6">
@@ -702,7 +717,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="border-t border-zinc-900 py-6 text-center text-xs text-zinc-500">
-        <p>GYMLOG • Phase 2 Complete: Smart Workout Tracker & Exercise Database Active</p>
+        <p>GYMLOG • Phase 3 Complete: Nutrition & Calorie Tracker Active</p>
       </footer>
 
       {/* Onboarding Wizard Modal */}

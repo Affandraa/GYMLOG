@@ -509,10 +509,11 @@ export const ActiveWorkoutSession: React.FC<ActiveWorkoutSessionProps> = ({
                         <div className="col-span-3 px-1 flex justify-center">
                           <input
                             type="number"
+                            inputMode="decimal"
                             step="0.5"
                             value={set.weightKg === 0 ? '' : set.weightKg}
                             onChange={(e) => handleUpdateSetValue(exIndex, sIdx, 'weightKg', Number(e.target.value) || 0)}
-                            className="w-16 bg-zinc-900 border border-zinc-800 rounded-lg py-1.5 text-center font-mono font-bold text-xs text-white focus:outline-none focus:border-emerald-500"
+                            className="w-full max-w-[4.5rem] h-10 sm:h-auto bg-zinc-900 border border-zinc-800 rounded-lg py-1.5 text-center font-mono font-bold text-xs text-white focus:outline-none focus:border-emerald-500"
                             placeholder="kg"
                           />
                         </div>
@@ -521,9 +522,10 @@ export const ActiveWorkoutSession: React.FC<ActiveWorkoutSessionProps> = ({
                         <div className="col-span-2 px-1 flex justify-center">
                           <input
                             type="number"
+                            inputMode="numeric"
                             value={set.reps === 0 ? '' : set.reps}
                             onChange={(e) => handleUpdateSetValue(exIndex, sIdx, 'reps', Number(e.target.value) || 0)}
-                            className="w-14 bg-zinc-900 border border-zinc-800 rounded-lg py-1.5 text-center font-mono font-bold text-xs text-white focus:outline-none focus:border-emerald-500"
+                            className="w-full max-w-[4rem] h-10 sm:h-auto bg-zinc-900 border border-zinc-800 rounded-lg py-1.5 text-center font-mono font-bold text-xs text-white focus:outline-none focus:border-emerald-500"
                             placeholder="reps"
                           />
                         </div>
@@ -533,7 +535,7 @@ export const ActiveWorkoutSession: React.FC<ActiveWorkoutSessionProps> = ({
                           <button
                             type="button"
                             onClick={() => handleToggleSetComplete(exIndex, sIdx)}
-                            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all cursor-pointer ${
+                            className={`w-10 h-10 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center transition-all cursor-pointer ${
                               set.isCompleted
                                 ? 'bg-emerald-500 text-zinc-950 shadow-md shadow-emerald-500/30'
                                 : 'bg-zinc-800/80 text-zinc-500 hover:text-white hover:bg-zinc-700'
@@ -657,7 +659,7 @@ export const ActiveWorkoutSession: React.FC<ActiveWorkoutSessionProps> = ({
       {/* Add Exercise Modal (With Search & Muscle Filters) */}
       {showAddExerciseModal && (
         <div className="fixed inset-0 z-60 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[85vh] flex flex-col">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[85dvh] flex flex-col">
             <div className="flex items-center justify-between pb-3 border-b border-zinc-800 shrink-0">
               <div className="flex items-center gap-2">
                 <Dumbbell className="w-5 h-5 text-emerald-400" />

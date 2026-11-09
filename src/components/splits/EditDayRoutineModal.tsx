@@ -152,7 +152,7 @@ export const EditDayRoutineModal: React.FC<EditDayRoutineModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-3xl w-full p-6 md:p-8 shadow-2xl relative my-8">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-3xl w-full p-4 sm:p-6 md:p-8 shadow-2xl relative my-2 sm:my-8">
         
         {/* Header */}
         <div className="flex items-start justify-between pb-4 border-b border-zinc-800">
@@ -345,7 +345,7 @@ export const EditDayRoutineModal: React.FC<EditDayRoutineModalProps> = ({
         {/* ================= ADD EXERCISE PICKER OVERLAY ================= */}
         {showAddPicker && (
           <div className="fixed inset-0 z-60 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[85vh] flex flex-col">
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[85dvh] flex flex-col">
               
               <div className="flex items-center justify-between pb-3 border-b border-zinc-800 shrink-0">
                 <div className="flex items-center gap-2">

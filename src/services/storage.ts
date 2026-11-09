@@ -1,6 +1,7 @@
 import type { UserProfile, DayOfWeek } from '../types/user'
 import type { DailyWorkoutPlan } from '../types/split'
 import type { WorkoutSession, PersonalRecord } from '../types/workout'
+import type { DailyNutritionLog } from '../types/nutrition'
 import { generateSampleHistory } from './workoutService'
 
 const STORAGE_KEYS = {
@@ -10,7 +11,8 @@ const STORAGE_KEYS = {
   CUSTOM_WORKOUT_PLANS: 'gymlog_custom_workout_plans_v1',
   WORKOUT_HISTORY: 'gymlog_workout_history_v1',
   ACTIVE_WORKOUT_DRAFT: 'gymlog_active_workout_draft_v1',
-  PERSONAL_RECORDS: 'gymlog_personal_records_v1'
+  PERSONAL_RECORDS: 'gymlog_personal_records_v1',
+  NUTRITION_LOGS: 'gymlog_nutrition_logs_v1'
 }
 
 export const DEFAULT_USER_PROFILE: UserProfile = {
@@ -246,5 +248,41 @@ export function savePersonalRecords(prs: Record<string, PersonalRecord>): void {
     localStorage.setItem(STORAGE_KEYS.PERSONAL_RECORDS, JSON.stringify(prs))
   } catch (e) {
     console.error('Error saving personal records:', e)
+  }
+}
+
+// ================= NUTRITION LOGS PERSISTENCE =================
+
+/** Load all nutrition logs as a map of date -> log */
+export function loadAllNutritionLogs(): Record<string, DailyNutritionLog> {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.NUTRITION_LOGS)
+    if (raw) {
+      return JSON.parse(raw)
+    }
+  } catch (e) {
+    console.error('Error reading nutrition logs:', e)
+  }
+  return {}
+}
+
+/** Load nutrition log for a specific date (YYYY-MM-DD) */
+export function loadDailyNutritionLog(date: string): DailyNutritionLog | null {
+  const all = loadAllNutritionLogs()
+  return all[date] ?? null
+}
+
+/** Save or update a single day's nutrition log */
+export function saveDailyNutritionLog(log: DailyNutritionLog): void {
+  try {
+    const all = loadAllNutritionLogs()
+    all[log.date] = log
+    // Keep only last 90 days to avoid bloat
+    const dates = Object.keys(all).sort().reverse()
+    const trimmed: Record<string, DailyNutritionLog> = {}
+    dates.slice(0, 90).forEach(d => { trimmed[d] = all[d] })
+    localStorage.setItem(STORAGE_KEYS.NUTRITION_LOGS, JSON.stringify(trimmed))
+  } catch (e) {
+    console.error('Error saving nutrition log:', e)
   }
 }

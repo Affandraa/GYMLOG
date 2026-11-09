@@ -62,8 +62,8 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-xl w-full p-6 md:p-8 shadow-2xl relative my-8">
+    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-start sm:items-center justify-center p-2 sm:p-4 overflow-y-auto">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-xl w-full p-4 sm:p-6 md:p-8 shadow-2xl relative my-2 sm:my-8">
         <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">

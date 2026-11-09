@@ -92,7 +92,7 @@ export const RestTimerBar: React.FC<RestTimerBarProps> = ({
   const progressPercent = totalSeconds > 0 ? ((totalSeconds - remainingSeconds) / totalSeconds) * 100 : 0
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 max-w-sm w-full transition-all">
+    <div className="fixed left-3 right-3 sm:left-auto sm:right-4 z-50 sm:max-w-sm sm:w-full transition-all bottom-[calc(0.75rem+env(safe-area-inset-bottom,0px))] sm:bottom-4">
       <div className="bg-zinc-900 border border-emerald-500/60 rounded-2xl shadow-2xl p-4 backdrop-blur-md ring-1 ring-emerald-500/30">
         
         {/* Top Header */}

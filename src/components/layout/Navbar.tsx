@@ -10,7 +10,8 @@ import {
   Sparkles,
   History,
   BookOpen,
-  Play
+  Play,
+  Utensils
 } from 'lucide-react'
 import type { UserProfile } from '../../types/user'
 import type { WorkoutSplit } from '../../types/split'
@@ -22,7 +23,8 @@ export type NavTab =
   | 'library' 
   | 'splits' 
   | 'calendar' 
-  | 'guidance' 
+  | 'guidance'
+  | 'nutrition'
   | 'profile'
 
 interface NavbarProps {
@@ -45,7 +47,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleNotifications
 }) => {
   return (
-    <header className="border-b border-zinc-800/80 bg-zinc-950/90 backdrop-blur-md sticky top-0 z-40">
+    <header className="border-b border-zinc-800/80 bg-zinc-950/90 backdrop-blur-md sticky top-0 z-40 pt-[env(safe-area-inset-top,0px)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <div 
@@ -61,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 GYMLOG
               </span>
               <span className="px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded">
-                Phase 2
+                Phase 3
               </span>
             </div>
             <p className="text-[11px] text-zinc-500 font-mono hidden sm:block">
@@ -162,6 +164,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           <button
+            onClick={() => onSelectTab('nutrition')}
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+              currentTab === 'nutrition'
+                ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-600/40'
+                : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50'
+            }`}
+          >
+            <Utensils className="w-3.5 h-3.5" />
+            <span>Nutrition</span>
+          </button>
+
+          <button
             onClick={() => onSelectTab('profile')}
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
               currentTab === 'profile'
@@ -207,10 +221,10 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile Sub-Navigation Bar */}
-      <div className="lg:hidden flex items-center gap-1 px-3 py-2 border-t border-zinc-800/60 bg-zinc-950 overflow-x-auto text-[11px] no-scrollbar">
+      <div className="lg:hidden flex items-center gap-1 px-3 py-2 border-t border-zinc-800/60 bg-zinc-950 overflow-x-auto text-xs no-scrollbar snap-x">
         <button
           onClick={() => onSelectTab('dashboard')}
-          className={`px-3 py-1.5 rounded-lg flex items-center gap-1 shrink-0 ${
+          className={`px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
             currentTab === 'dashboard' ? 'bg-emerald-600 text-white font-bold' : 'text-zinc-400 bg-zinc-900/50'
           }`}
         >
@@ -219,7 +233,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => onSelectTab('workout')}
-          className={`px-3 py-1.5 rounded-lg flex items-center gap-1 shrink-0 ${
+          className={`px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
             currentTab === 'workout' 
               ? 'bg-emerald-600 text-white font-bold' 
               : isWorkoutActive 
@@ -232,7 +246,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => onSelectTab('history')}
-          className={`px-3 py-1.5 rounded-lg flex items-center gap-1 shrink-0 ${
+          className={`px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
             currentTab === 'history' ? 'bg-emerald-600 text-white font-bold' : 'text-zinc-400 bg-zinc-900/50'
           }`}
         >
@@ -241,7 +255,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => onSelectTab('library')}
-          className={`px-3 py-1.5 rounded-lg flex items-center gap-1 shrink-0 ${
+          className={`px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
             currentTab === 'library' ? 'bg-emerald-600 text-white font-bold' : 'text-zinc-400 bg-zinc-900/50'
           }`}
         >
@@ -250,7 +264,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => onSelectTab('calendar')}
-          className={`px-3 py-1.5 rounded-lg flex items-center gap-1 shrink-0 ${
+          className={`px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
             currentTab === 'calendar' ? 'bg-emerald-600 text-white font-bold' : 'text-zinc-400 bg-zinc-900/50'
           }`}
         >
@@ -259,7 +273,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => onSelectTab('splits')}
-          className={`px-3 py-1.5 rounded-lg flex items-center gap-1 shrink-0 ${
+          className={`px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
             currentTab === 'splits' ? 'bg-emerald-600 text-white font-bold' : 'text-zinc-400 bg-zinc-900/50'
           }`}
         >
@@ -268,7 +282,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => onSelectTab('guidance')}
-          className={`px-3 py-1.5 rounded-lg flex items-center gap-1 shrink-0 ${
+          className={`px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
             currentTab === 'guidance' ? 'bg-emerald-600 text-white font-bold' : 'text-zinc-400 bg-zinc-900/50'
           }`}
         >
@@ -276,8 +290,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           <span>Guide</span>
         </button>
         <button
+          onClick={() => onSelectTab('nutrition')}
+          className={`px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
+            currentTab === 'nutrition' ? 'bg-emerald-600 text-white font-bold' : 'text-zinc-400 bg-zinc-900/50'
+          }`}
+        >
+          <Utensils className="w-3.5 h-3.5" />
+          <span>Nutrition</span>
+        </button>
+        <button
           onClick={() => onSelectTab('profile')}
-          className={`px-3 py-1.5 rounded-lg flex items-center gap-1 shrink-0 ${
+          className={`px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
             currentTab === 'profile' ? 'bg-emerald-600 text-white font-bold' : 'text-zinc-400 bg-zinc-900/50'
           }`}
         >

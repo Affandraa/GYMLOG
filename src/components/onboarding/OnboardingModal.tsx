@@ -71,8 +71,8 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full p-6 md:p-8 shadow-2xl relative my-8">
+    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-start sm:items-center justify-center p-2 sm:p-4 overflow-y-auto">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full p-4 sm:p-6 md:p-8 shadow-2xl relative my-2 sm:my-8">
         
         {/* Progress Bar & Header */}
         <div className="mb-8">

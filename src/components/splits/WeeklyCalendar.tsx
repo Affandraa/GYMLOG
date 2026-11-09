@@ -242,7 +242,7 @@ export const WeeklyCalendar: React.FC<WeeklyCalendarProps> = ({
       {/* DAY DETAILS DRAWER / MODAL */}
       {selectedDayPlan && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full p-6 md:p-8 shadow-2xl relative my-8">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full p-4 sm:p-6 md:p-8 shadow-2xl relative my-2 sm:my-8">
             <div className="flex items-start justify-between pb-4 border-b border-zinc-800">
               <div>
                 <span className="text-xs uppercase font-mono font-bold text-emerald-400">

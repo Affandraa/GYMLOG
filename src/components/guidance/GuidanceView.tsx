@@ -68,7 +68,7 @@ export const GuidanceView: React.FC<GuidanceViewProps> = ({
       </div>
 
       {/* Main Guidance Card */}
-      <div className="bg-zinc-900/70 border border-zinc-800 rounded-2xl p-6 md:p-8 space-y-8">
+      <div className="bg-zinc-900/70 border border-zinc-800 rounded-2xl p-4 sm:p-6 md:p-8 space-y-8">
         {/* Level Overview Banner */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-800">
           <div>
@@ -93,7 +93,7 @@ export const GuidanceView: React.FC<GuidanceViewProps> = ({
             </p>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-4 text-xs space-y-1.5 self-start shrink-0 min-w-[200px]">
+          <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-4 text-xs space-y-1.5 self-start shrink-0 w-full md:w-auto md:min-w-[200px]">
             <div className="text-zinc-400">Recommended Frequency:</div>
             <div className="font-bold text-white text-sm">{guidance.recommendedDays}</div>
             <div className="text-zinc-400 pt-1">Target Intensity:</div>

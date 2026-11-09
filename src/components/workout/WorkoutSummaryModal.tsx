@@ -34,7 +34,7 @@ export const WorkoutSummaryModal: React.FC<WorkoutSummaryModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-70 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-zinc-900 border border-emerald-500/40 rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl relative text-center space-y-6 my-8">
+      <div className="bg-zinc-900 border border-emerald-500/40 rounded-3xl max-w-lg w-full p-4 sm:p-6 md:p-8 shadow-2xl relative text-center space-y-6 my-2 sm:my-8">
         
         {/* Glow Header */}
         <div className="relative">
